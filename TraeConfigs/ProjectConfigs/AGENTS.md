@@ -2,16 +2,19 @@
 ## 整体要求
 - 调用mcp失败时，优先根据调用返回的*信息(message)*, 调整调用参数重新执行mcp调用。
 - 开发过程中按照*测试驱动开发（TDD）*进行。
-- 开发过程中读取unity编辑器的*Console*窗口内容，检查是否有报错
+- 开发过程中经常读取unity编辑器的*Console*窗口内容，检查是否有报错
 - 任何对场景的编辑（如搭建场景），直接通过*unityMCP*来做，尽量避免用脚本配置
 - 使用unityMCP时，先载入*unity-mcp-helper*技能，了解*unityMCP*具有的编辑器操作功能。
 - 使用git做版本管理
+
+- 所有.cs文件遵循unity c#语法。
 
 ## 技能依赖
 
 | 时机 | 技能 |
 |------|------|
 | 使用unityMCP时| `unity-mcp-helper` |
+| 使用unity-test-framework时| `unity-test-framework` |
 
 # 偏好
 ## 输入系统
@@ -21,9 +24,8 @@
 - 及时更新git commit。
 
 # 测试驱动开发（TDD）
-- 使用*unity-test-framework*框架
-- 按照*Red-Green-Refactor*方式迭代开发，先写失败测试，代码开发完成后通过测试，然后重构。
-- 通过*unityMCP*在编辑器内启动测试
+- 按照*Red-Green-Refactor*方式，先写失败测试，代码开发完成后再通过编辑器TestRunner执行测试。通过测试后，通过code-review重构代码。
+- 使用*unityMCP*在编辑器内通过TestRunner启动测试
 
 # 游戏编辑器内测试
 ### 基本流程
@@ -42,7 +44,7 @@
 - 应用材质：`manage_components` action: set_property, component_type: MeshRenderer, property: material, value: 材质路径(字符串)
 - 注意：`set_property` 时只需 property 和 value 参数，不需要 properties 参数
 
-#### 从场景中已有对象创建预制体
+### 从场景中已有对象创建预制体
 - 使用 manage_gameobject 工具的 modify 动作，设置 save_as_prefab 参数为 true。
 - 示例：
 ```
@@ -54,4 +56,8 @@ manage_gameobject(
     prefab_path="Assets/Prefabs/Player.prefab"  
 )
 ```
+# 常见问题
+- 使用unit-test-framework时，没调用unity-test-framework技能导致编译错误
 
+# 错误排查
+- 首先查看Console窗口是否有编译错误
