@@ -8,7 +8,7 @@
 - When MCP calls fail, adjust parameters based on the returned `message` and retry.
 - Use `batch_execute` as much as possible to reduce MCP call times.
 - Follow `Test-Driven Development (TDD)` during development.
-- Check the Unity Editor `Console` log with `read_console` regularly for errors.
+- Check the Unity Editor `Console` log with `read_console` in `unityMCP` regularly for errors.
 - Write editor scripts to config and setup scene rather than direct `unityMCP` call.
 - If editor scripts is created for tasks, execute it `automatically` via MCP, avoid execute manually. The explict guide is in **GameObjects Setup & Editing & Configuration**.
 - Use git for version control.
@@ -105,7 +105,6 @@ Load the appropriate skill before starting each workflow:
 ### Git
 
 - Do not use `git worktree`.
-- Commit changes staged periodically.
 
 ## GameObjects Setup & Editing & Configuration
 

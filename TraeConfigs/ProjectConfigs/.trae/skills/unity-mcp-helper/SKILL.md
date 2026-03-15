@@ -1,6 +1,6 @@
 ---
 name: unity-mcp-helper
-description: Use when user mentions Unity MCP, CoplayDev/unity-mcp, or wants to control Unity Editor.
+description: Use when need to use Unity MCP, read console, or control Unity Editor.
 ---
 
 # Unity MCP Helper Skill
