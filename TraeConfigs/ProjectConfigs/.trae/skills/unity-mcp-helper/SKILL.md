@@ -116,12 +116,56 @@ description: Use when user mentions Unity MCP, CoplayDev/unity-mcp, or wants to 
 
 ## Common Workflows
 
+### Apply Material to Object
+```
+1. manage_asset: Create material
+   - action: "create"
+   - asset_type: "Material"
+   - path: "Assets/Materials/MyMaterial.mat"
+
+2. manage_components: Apply material to MeshRenderer
+   - action: "set_property"
+   - component_type: "MeshRenderer"
+   - property: "material"
+   - value: "Assets/Materials/MyMaterial.mat"
+   Note: Use property/value parameters, NOT properties parameter
+```
+
+### Create Prefab from Scene Object
+```
+1. manage_gameobject: Save existing object as prefab
+   - action: "modify"
+   - target: "Player" (or object name)
+   - save_as_prefab: true
+   - prefab_path: "Assets/Prefabs/Player.prefab"
+```
+
+### Set Object/Component References
+```
+1. manage_gameobject: Set field to reference another GameObject
+   - Use component_properties with find syntax:
+   component_properties = {
+       "MyScript": {
+           "targetObject": {"find": "Player", "method": "by_name"}
+       }
+   }
+
+2. Reference specific component on target:
+   component_properties = {
+       "MyScript": {
+           "playerHealth": {"find": "Player", "component": "HealthComponent"}
+       }
+   }
+
+Note: Prefab references must be configured by 
+```
+
 ### Create a Player Character
 ```
 1. manage_gameobject: Create capsule
 2. manage_script: Create PlayerController.cs
 3. manage_gameobject: Add component to capsule
-4. manage_asset: Save as prefab
+4. manage_gameobject: Save as prefab
 ```
 
 ### Set Up a Scene
@@ -153,6 +197,9 @@ description: Use when user mentions Unity MCP, CoplayDev/unity-mcp, or wants to 
 - `parent`: Parent GameObject path
 - `components`: Array of components to add
 - `properties`: Component properties to modify
+- `save_as_prefab`: Whether save as prefab
+- `prefab_path`: The path that prefab aim to save
+
 
 ### manage_script
 - `action`: create|read|update|delete
@@ -215,31 +262,3 @@ The MCP exposes these resources for context:
 ### Tool Not Available
 - Check version: newer tools require v9.4.6+
 - Use `manage_tools` to enable disabled tools
-
-## Installation
-
-```bash
-# Unity Package (Package Manager)
-https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
-
-# Python Server
-pip install unity-mcp
-# or with uv
-uv pip install unity-mcp
-```
-
-## MCP Configuration
-
-```json
-{
-  "mcpServers": {
-    "unity-mcp": {
-      "command": "python",
-      "args": ["-m", "unity_mcp.server"],
-      "env": {
-        "UNITY_MCP_PORT": "8080"
-      }
-    }
-  }
-}
-```

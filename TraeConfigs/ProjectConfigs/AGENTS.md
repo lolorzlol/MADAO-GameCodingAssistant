@@ -1,98 +1,132 @@
+# AGENTS.md
 
- # Workflow Orchestration
+## Development Workflow
 
-  ## 操作要求
-  - 调用mcp失败时，优先根据调用返回的*信息(message)*, 调整调用参数重新执行mcp调用。
-  - 开发过程按照*测试驱动开发（TDD）*进行。
-  - 开发过程中及时读取unity编辑器的*Console*窗口内容，检查是否有报错
-  - 任何对场景的编辑（如搭建场景），直接通过*unityMCP*来做，尽量避免用脚本配置
-  - 使用unityMCP时，先载入*unity-mcp-helper*技能，了解*unityMCP*具有的编辑器操作功能。
-  - 使用git做版本管理
+### Operation Requirements
 
-  ## Plan Mode Orchestration
-  - Non-trivial tasks (3+ steps or architecture decisions) must enter plan mode
-  - If things go off track, stop and replan—don't push through
-  - If bugs or frustration accumulate, stop and replan
-  - Write detailed specs as input to reduce ambiguity
-  - Use numbered steps
+- Check both `message` and `success` from MCP call results to determine success. When `message` doesn't match expectations, treat the call as failed.
+- When MCP calls fail, adjust parameters based on the returned `message` and retry.
+- Follow `Test-Driven Development (TDD)` during development.
+- Check the Unity Editor `Console` window regularly for errors during development.
 
-  ## Convert List to Subagents
-  - Use subagents heavily to keep the main context window clean
-  - Outsource research, exploration, and parallel analysis to subagents
-  - Reduce cognitive load and separate concerns via subagents
-  - One task per subagent, focused execution
+- Load the `unity-mcp-helper` skill before using unityMCP to understand available editor operations.
+- Use git for version control.
 
-  ## Self-Improvement Loop
-  - After user correction: update `tasks/lessons.md` to record patterns
-  - Write rules for yourself to prevent the same mistakes
-  - Iterate improvements until error rate drops
-  - Verify improvements each session, apply to relevant projects
+### Plan Mode Orchestration
 
-  ## Verification Defaults On
-  - Never mark a task complete until you've proven it works
-  - Compare main branch to your changes when relevant
-  - Always be ready to push to production, verify
-  - Ask yourself "Would a senior engineer approve this?"
-  - Do assertions, logs, test suite corrections
+- Non-trivial tasks (3+ steps or architecture decisions) must enter plan mode.
+- If things go off track, stop and replan—don't push through.
+- If bugs or frustration accumulate, stop and replan.
+- Write detailed specs as input to reduce ambiguity.
+- Use numbered steps.
 
-  ## Elegant Elegance - Balanced
-  - For non-trivial changes: pause and ask "Is there a more elegant way?"
-  - If a fix feels like a patch: "Now that I know everything, implement an elegant solution"
-  - Skip this step for simple obvious fixes, don't over-engineer
-  - Challenge your own work before committing
+### Task Management
 
-  ## Autonomous Bug Fixing
-  - When you find a bug: fix it directly, don't ask for help
-  - Point out logs, errors, failing tests, then resolve
-  - User doesn't need to switch context
-  - Proactively fix failing CI tests, no need to tell how
+1. Plan first: write plan to `tasks/todo.md` with checkboxes.
+2. Validate plan: check before starting implementation.
+3. Implement incrementally: check off each step as completed.
+4. Explain changes: provide high-level summary for each step.
+5. Document results: add review section in `tasks/todo.md`.
+6. Record lessons: update `tasks/lessons.md` after corrections.
 
-  ## Task Management
-  1. Plan first: write plan to `tasks/todo.md` with checkboxes
-  2. Validate plan: check before starting implementation
-  3. Implement incrementally: check off each step as completed
-  4. Explain changes: provide high-level summary for each step
-  5. Document results: add review section in `tasks/todo.md`
-  6. Record lessons: update `tasks/lessons.md` after corrections
+### Subagent Strategy
 
-  ## Core Principles
-  - Simplicity first: each change should be as simple as possible, affecting minimal code
-  - Don't be lazy: find root causes, no band-aid fixes, senior engineer standards
-  - Minimal impact: changes should only involve what's necessary
+- Use subagents heavily to keep the main context window clean.
+- Outsource research, exploration, and parallel analysis to subagents.
+- Reduce cognitive load and separate concerns via subagents.
+- One task per subagent, focused execution.
 
+### Code Quality Principles
 
-## 技能依赖
+**Self-Improvement Loop:**
 
-| 时机 | 技能 |
-|------|------|
-| 使用unityMCP时| `unity-mcp-helper` |
-| 使用unity-test-framework时| `unity-test-framework` |
-| 进行测试驱动开发时| `test-driven-development` |
+- After user correction: update `tasks/lessons.md` to record patterns.
+- Write rules for yourself to prevent the same mistakes.
+- Iterate improvements until error rate drops.
+- Verify improvements each session, apply to relevant projects.
 
-# 偏好
-## 输入系统
-- 使用旧的输入系统
-## git
-- 不使用*git worktree*。
-- 及时更新git commit。
+**Verification Defaults:**
 
-# 测试驱动开发（TDD）
-- 按照*Red-Green-Refactor*方式，先写失败测试，代码开发完成后再通过编辑器TestRunner执行测试。通过测试后，通过code-review重构代码。
-- 使用*unityMCP*在编辑器内通过TestRunner启动测试
+- Never mark a task complete until you've proven it works.
+- Compare main branch to your changes when relevant.
+- Always be ready to push to production, verify.
+- Ask yourself "Would a senior engineer approve this?"
+- Do assertions, logs, test suite corrections.
 
-# 游戏编辑器内测试
-### 基本流程
-- 通过play模式进入游戏
-- 模拟输入
-- 截图game窗口
-- 对截图内容进行图像理解，并修复存在的问题
+**Elegant Code:**
 
-# 场景搭建
-- 需要充分设计不同物体的大小和材质
+- For non-trivial changes: pause and ask "Is there a more elegant way?"
+- If a fix feels like a patch: "Now that I know everything, implement an elegant solution."
+- Skip this step for simple obvious fixes, don't over-engineer.
+- Challenge your own work before committing.
 
-# 常见问题
-- 使用unit-test-framework时，没调用unity-test-framework技能导致编译错误
+**Core Principles:**
 
-# 错误排查
-- 首先查看Console窗口是否有编译错误
+- Simplicity first: each change should be as simple as possible, affecting minimal code.
+- Don't be lazy: find root causes, no band-aid fixes, senior engineer standards.
+- Minimal impact: changes should only involve what's necessary.
 
+**Autonomous Bug Fixing:**
+
+- When you find a bug: fix it directly, don't ask for help.
+- Point out logs, errors, failing tests, then resolve.
+- User doesn't need to switch context.
+- Proactively fix failing CI tests, no need to tell how.
+
+## Testing Instructions
+
+### Test-Driven Development (TDD)
+
+- Follow the *Red-Green-Refactor* cycle: write failing tests first, then implement code, and run the tests again to make them pass.
+- Run tests through the Unity Editor TestRunner.
+- After tests pass, refactor code through code-review.
+- Use *unityMCP* to launch tests via TestRunner in the editor.
+
+### In-Editor Game Testing
+
+Basic workflow:
+
+1. Enter Play mode to start the game.
+2. Simulate input.
+3. Screenshot the Game window.
+4. Analyze the screenshot visually and fix any issues found.
+
+## Skills Reference
+
+Load the appropriate skill before starting each workflow:
+
+| Workflow | Skill |
+|----------|-------|
+| Using unityMCP | `unity-mcp-helper` |
+| Using unity-test-framework | `unity-test-framework` |
+| Test-Driven Development | `test-driven-development` |
+
+## Preferences
+
+### Input System
+
+- Use the legacy input system.
+
+### Git
+
+- Do not use `git worktree`.
+- Commit changes promptly.
+
+## Scene Setup
+
+- Design the size and materials of different objects carefully.
+- **Automated Configuration with Editor Scripts**: When needing to set up complex references, create editor scripts (in `Assets/Scripts/Editor/` folder) to automate the configuration process. This includes both:
+  - **Scene object references**: Use `GameObject.Find()` to locate objects in the scene
+  - **Prefab references**: Use `AssetDatabase.LoadAssetAtPath<T>()` to load prefabs and assets from disk
+  - Then assign them directly to component fields programmatically. Add a menu item with `[MenuItem]` attribute to trigger the setup process.
+
+## Troubleshooting
+
+### Common Issues
+
+- When using unit-test-framework, forgetting to call the `unity-test-framework` skill causes compilation errors.
+
+### Debugging Steps
+
+- First check the Console window for compilation errors.
+- Check for any other issues as needed.
