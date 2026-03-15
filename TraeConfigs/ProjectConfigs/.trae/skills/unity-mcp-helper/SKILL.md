@@ -140,26 +140,6 @@ description: Use when user mentions Unity MCP, CoplayDev/unity-mcp, or wants to 
    - prefab_path: "Assets/Prefabs/Player.prefab"
 ```
 
-### Set Object/Component References
-```
-1. manage_gameobject: Set field to reference another GameObject
-   - Use component_properties with find syntax:
-   component_properties = {
-       "MyScript": {
-           "targetObject": {"find": "Player", "method": "by_name"}
-       }
-   }
-
-2. Reference specific component on target:
-   component_properties = {
-       "MyScript": {
-           "playerHealth": {"find": "Player", "component": "HealthComponent"}
-       }
-   }
-
-Note: Prefab references must be configured by 
-```
-
 ### Create a Player Character
 ```
 1. manage_gameobject: Create capsule
