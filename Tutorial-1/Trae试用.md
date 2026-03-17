@@ -26,9 +26,9 @@ https://docs.trae.ai/
 2. 检查一下模型是否可用
 ![alt text](image-10.png)
 这里可以选择模型。简单来说：
-GLM-5，Minimax-M2.5, Doubao-Seed-2.0-Code，Kimi-K2.5都好一些。
-其中Minimax-2.5速度最快。GLM-5推理最强。Doubao-Seed-2.0-Code和Kimi-K2.5带视觉理解。
-以上四个里面，Minimax-M2.5和Kimi-K2.5最不容易排队。
+GLM-5，GLM4.7, Minimax-M2.5, Doubao-Seed-2.0-Code，Kimi-K2.5都好一些。
+其中Minimax-2.5速度最快。GLM-5推理最强（GLM4.7为弱化版）。Doubao-Seed-2.0-Code和Kimi-K2.5带视觉理解。
+以上四个里面，GLM4.7，Minimax-M2.5和Kimi-K2.5最不容易排队。
 3. 进入Solo模式
 ![alt text](image-11.png)
 
