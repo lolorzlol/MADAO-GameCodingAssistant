@@ -17,7 +17,7 @@ Load the appropriate skill before starting each workflow:
 - When MCP calls fail, adjust parameters based on the returned `message` and retry.
 - Use `batch_execute` as much as possible to reduce MCP call times.
 - Ensure the editor is not in play mode before executing editor scripts.
-- If editor scripts is created for tasks, execute it `automatically` via MCP, avoid execute manually. The explict guide is in **GameObjects Setup & Editing & Configuration**.
+- If editor scripts is created for tasks, execute it automatically via `unityMCP`, avoid execute manually. The explict guide is in **GameObjects Setup & Editing & Configuration**.
 - Use git for version control. Add proper .gitignore before git init.
 - Add Tooltip attributes to editor-configurable variables.
 - Check the Unity Console log first when encountering bugs.

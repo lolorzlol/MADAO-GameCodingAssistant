@@ -25,7 +25,10 @@ In Unity: Window > Package Manager > + > Add package from git URL...
 https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
 ```
 4. 开启mcp
-
+![alt text](image-5.png)
+![alt text](image-8.png)
+之后会启动一个网络监听进程，不能关，放下面就好了。
+![alt text](image-7.png)
 
 # Trae对话
 1. 直接提问，“用superpowers工作流，balabala”
