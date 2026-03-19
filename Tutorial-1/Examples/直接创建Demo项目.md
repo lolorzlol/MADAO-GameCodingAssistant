@@ -1,59 +1,103 @@
-# 新建项目
-unity新建3D项目，2D也行。
+# 直接创建 Demo 项目
 
-# mcp配置
-具体安装内容https://github.com/CoplayDev/unity-mcp里面有配置指引。
+## 新建 Unity 项目
 
-1. 安装Python
-https://www.python.org/downloads/ 下载安装。（已经有python的别下）
+Unity 新建 3D 项目（2D 也可以）。
 
-2. 安装uv
-https://docs.astral.sh/uv/getting-started/installation/ （就是几个命令行的事情）
+---
 
-开始菜单搜powershell，然后打开powershell
+## MCP 配置
+
+详细安装说明参考：https://github.com/CoplayDev/unity-mcp
+
+### 步骤 1：安装 Python
+
+下载地址：https://www.python.org/downloads/
+
+> 已安装 Python 的可跳过。
+
+### 步骤 2：安装 uv
+
+打开 PowerShell（开始菜单搜索 `powershell`）：
+
 ![alt text](image-4.png)
-然后再powershell里面复制这一行执行就行：
-```
+
+执行以下命令：
+
+```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
-（powershell粘贴用ctrl+shift+v, 最后按enter执行命令）
 
-1. 安装mcp
-In Unity: Window > Package Manager > + > Add package from git URL...
+> PowerShell 粘贴使用 `Ctrl+Shift+V`，最后按 `Enter` 执行。
+
+### 步骤 3：安装 MCP
+
+在 Unity 中：`Window > Package Manager > + > Add package from git URL...`
 
 ```
 https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
 ```
-4. 开启mcp
+
+### 步骤 4：开启 MCP
+
 ![alt text](image-5.png)
+
 ![alt text](image-8.png)
-之后会启动一个网络监听进程，不能关，放下面就好了。
+
+> 之后会启动一个网络监听进程，不要关闭，最小化即可。
+
 ![alt text](image-7.png)
 
+---
 
-# 将配置文件复制到新建的项目中
-直接把本项目中的TraeConfigs\ProjectConfigs里面的.trae文件夹和AGENTS.md复制到新建的unity项目根目录就行了。
+## 复制配置文件到项目
+
+将本项目 `TraeConfigs/ProjectConfigs` 中的 `.trae` 文件夹和 `AGENTS.md` 复制到 Unity 项目根目录：
+
 ![alt text](image-10.png)
 
-# 打开Trae,打开项目文件夹，进入solo模式
-详细可参考[游戏策划案例](Tutorial-1/Trae安装+策划文档生成.md)
+---
 
-# Trae对话
-1. 直接提问，“用superpowers工作流，balabala”
+## 打开 Trae 并进入 Solo 模式
+
+详细步骤参考 [游戏策划案例](Tutorial-1/Trae安装+策划文档生成.md)
+
+---
+
+## Trae 对话流程
+
+### 步骤 1：输入提示词
+
+```
+用 superpowers 工作流，balabala
+```
+
 ![alt text](image.png)
-接下来会进入brain-storming（头脑风暴）阶段，回答他的问题。
 
-3. 确认设计文档、架构文档
+接下来进入 brainstorming（头脑风暴）阶段，回答 AI 的问题。
+
+### 步骤 2：确认设计文档
+
 ![alt text](image-1.png)
-![alt text](image-2.png)
-可以在这里指出有什么问题之类的。
-同样也可以说“用game-development优化一下方案”。学过skill就知道这是什么意思
 
-4. 选择开发方式
-之后会自动生成计划文档。然后让选择开发方式，两个都行，第一个直接在当前窗口执行。第二个在Trae里面要自己新开一个窗口。
+![alt text](image-2.png)
+
+可在此指出问题，或说"用 game-development 优化一下方案"。
+
+### 步骤 3：选择开发方式
+
+AI 会自动生成计划文档，然后让你选择开发方式：
+
 ![alt text](image-3.png)
 
-5. 等待
-之后就是比较长时间的等待，他会自动生成内容，控制编辑器等等。中间可以打断干预，有时候会犯错而且一直绕圈子。
+两种方式都可以：
+- 第一种：直接在当前窗口执行
+- 第二种：新开窗口执行
 
-最后完成后可以自己测试，有bug的话,可以直接在下面让改,也可以新开窗口（清零上下文）。提示词，看[修复Bug](Tutorial-1/Examples/修复Bug.md)。
+### 步骤 4：等待完成
+
+之后是较长时间的等待，AI 会自动生成内容、控制编辑器等。
+
+> 中间可以打断干预，有时 AI 会犯错并绕圈子。
+
+完成后自行测试，如有 Bug 参考 [修复Bug](Tutorial-1/Examples/修复Bug.md)。

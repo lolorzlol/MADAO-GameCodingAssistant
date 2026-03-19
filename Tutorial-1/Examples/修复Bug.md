@@ -1,6 +1,16 @@
-# 就是一句话
+# 修复 Bug
+
+## 提示词
+
 ```
-使用superpowers工作流，balabala
+使用 superpowers 工作流，balabala
 ```
-解释：superpowers工作流中的systematic-debugging会保证AI先读完相关代码，找到根因再修复问题。
-如果直接让AI修bug而不看完代码，AI很容易乱搞。
+
+## 说明
+
+Superpowers 工作流中的 `systematic-debugging` 会保证 AI：
+
+1. 先读完相关代码
+2. 找到根因再修复问题
+
+> 如果直接让 AI 修 bug 而不看完代码，AI 很容易乱改。
