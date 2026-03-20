@@ -61,15 +61,15 @@
 ```
 main分支（稳定）
     │
-    ├─ 创建 feature/login 分支
+    ├─ 创建 feature/inventory 分支
     │       │
-    │       ├─ 开发登录功能
+    │       ├─ 开发背包系统
     │       ├─ Commit 提交
     │       │
     │   合并回main
     │       │
     ▼       ▼
-main分支（包含登录功能）
+main分支（包含背包系统）
 ```
 
 ### 完整操作流程
@@ -77,7 +77,7 @@ main分支（包含登录功能）
 #### 步骤1：从main创建功能分支
 
 ```
-帮我从main分支创建一个 feature/user-login 分支，我要开发用户登录功能
+帮我从main分支创建一个 feature/inventory 分支，我要开发背包系统
 ```
 
 AI可能依次完成：
@@ -90,13 +90,13 @@ AI可能依次完成：
 正常编写代码，然后提交：
 
 ```
-帮我提交这次的修改，这次实现了用户登录表单和验证逻辑
+帮我提交这次的git修改，这次实现了背包界面和物品拖拽功能
 ```
 
 #### 步骤3：推送到远程仓库
 
 ```
-帮我把 feature/user-login 分支推送到GitHub
+帮我把 feature/inventory 分支推送到GitHub
 ```
 
 AI可能依次完成：
@@ -108,7 +108,7 @@ AI可能依次完成：
 开发完成并通过测试后，合并回主线：
 
 ```
-帮我把 feature/user-login 分支合并到 main 分支
+帮我把 feature/inventory 分支合并到 main 分支
 ```
 
 AI可能依次完成：
@@ -121,7 +121,7 @@ AI可能依次完成：
 #### 步骤5：删除功能分支
 
 ```
-帮我删除 feature/user-login 分支（本地和远程）
+帮我删除 feature/inventory 分支（本地和远程）
 ```
 
 ---
