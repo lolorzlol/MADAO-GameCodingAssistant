@@ -14,9 +14,9 @@ Load the appropriate skill before starting each workflow:
 ## Development Workflow
 
 ### Operation Requirements
-
 - Check both `message` and `success` from MCP call results to determine success
 - When MCP calls fail, adjust parameters based on the returned `message` and retry
+- Do not use MCP to create folders
 - Use `batch_execute` as much as possible to reduce MCP call times
 - Ensure the editor is not in Play mode before executing editor scripts
 - Execute editor scripts automatically via `unityMCP` (avoid manual execution)
@@ -94,6 +94,31 @@ Load the appropriate skill before starting each workflow:
 - Follow the **Red-Green-Refactor** cycle
 - Run tests through `run_tests` in `unityMCP`
 - After tests pass, refactor code through code-review
+- Use `batch_execute` to run tests and get results in one call:
+
+  ```json
+  {
+    "commands": [
+      { "tool": "run_tests", "params": { "mode": "EditMode" } },
+      { "tool": "get_test_job", "params": { "job_id": "<job_id_from_run_tests>", "wait_timeout": 60, "include_failed_tests": true } }
+    ]
+  }
+  ```
+
+---
+
+## Create Prefabs Example
+
+Use `manage_gameobject` to save an existing object as a prefab:
+
+```json
+{
+  "action": "modify",
+  "target": "Player",
+  "save_as_prefab": true,
+  "prefab_path": "Assets/Prefabs/Player.prefab"
+}
+```
 
 ---
 
