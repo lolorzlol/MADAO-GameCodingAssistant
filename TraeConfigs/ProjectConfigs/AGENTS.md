@@ -95,15 +95,16 @@ Load the appropriate skill before starting each workflow:
 - Follow the **Red-Green-Refactor** cycle
 - Run tests through `run_tests` in `unityMCP`
 - After tests pass, refactor code through code-review
-- Use `batch_execute` to run tests and get results in one call:
+- Example workflow:
 
+  **Step 1: Run tests**
   ```json
-  {
-    "commands": [
-      { "tool": "run_tests", "params": { "mode": "EditMode" } },
-      { "tool": "get_test_job", "params": { "job_id": "<job_id_from_run_tests>", "wait_timeout": 60, "include_failed_tests": true } }
-    ]
-  }
+  { "tool": "run_tests", "params": { "mode": "EditMode" } }
+  ```
+
+  **Step 2: Get results** (use job_id from step 1)
+  ```json
+  { "tool": "get_test_job", "params": { "job_id": "<job_id>", "wait_timeout": 60, "include_failed_tests": true } }
   ```
 
 ---
