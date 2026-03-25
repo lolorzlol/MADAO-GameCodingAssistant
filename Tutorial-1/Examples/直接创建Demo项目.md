@@ -133,6 +133,7 @@ https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
 ## Trae 对话流程
 
 先进入 SOLO 模式，然后开始后面的对话步骤。
+**模型最好选：GML-5**
 
 ### 步骤 1：输入提示词
 
