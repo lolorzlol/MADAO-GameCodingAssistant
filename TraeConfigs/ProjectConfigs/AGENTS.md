@@ -1,31 +1,47 @@
 # AGENTS.md
 
+Project-specific agent instructions for Unity game development with unityMCP.
+
+---
+
+## Table of Contents
+
+- [Skills Reference](#skills-reference)
+- [Development Workflow](#development-workflow)
+- [Testing](#testing)
+- [Editor Scripts](#editor-scripts)
+- [Preferences](#preferences)
+- [Troubleshooting](#troubleshooting)
+
+---
+
 ## Skills Reference
 
-Load the appropriate skill before starting each workflow:
+Invoke the appropriate skill before starting each workflow:
 
 | Workflow | Skill |
 |----------|-------|
-| Using unityMCP | `unity-mcp-orchestrator` |
-| Using unity-test-framework | `unity-test-framework` |
+| unityMCP operations | `unity-mcp-helper` |
+| Unity Test Framework | `unity-test-framework` |
 
 ---
 
 ## Development Workflow
 
-### Operation Requirements
+### Unity Operations
 
-- Check both `message` and `success` from MCP call results to determine success
-- When MCP calls fail, adjust parameters based on the returned `message` and retry
-- Run commands to create folders and scripts (e.g., `mkdir -p`)
-- Use `batch_execute` as much as possible to reduce MCP call times
-- Ensure the editor is not in Play mode before executing editor scripts
-- Place all editor scripts under `Assets/Editor/`
-- Execute editor scripts automatically via `unityMCP` (avoid manual execution)
-- Delete one-time use editor scripts after execution succeeds
-- Use git for version control, add proper `.gitignore` before `git init`
-- Add Tooltip attributes to editor-configurable variables
-- Monitor Unity Console regularly for logs and compile errors
+- **Check MCP results**: Verify both `message` and `success` fields from MCP calls
+- **Retry on failure**: Adjust parameters based on returned `message` and retry
+- **Batch operations**: Use `batch_execute` to reduce MCP call times
+- **Editor scripts**: Place under `Assets/Editor/`, delete after one-time use
+- **Tooltips**: Add `[Tooltip]` attributes to editor-configurable variables
+- **Console monitoring**: Check Unity Console regularly for logs and compile errors
+- **Play mode**: Ensure editor is not in Play mode before executing editor scripts
+
+### Version Control
+
+- Use git for version control
+- Add proper `.gitignore` before `git init`
 
 ### Plan Mode Orchestration
 
@@ -96,17 +112,17 @@ Load the appropriate skill before starting each workflow:
 
 - Follow the **Red-Green-Refactor** cycle
 - Run tests through `run_tests` in `unityMCP`
-- After tests pass, refactor code through code-review
+- After tests pass, refactor via code-review
 
-**Example Workflow:**
+### Running Tests
 
-Step 1: Run tests
+**Step 1: Start test run**
 
 ```json
 { "tool": "run_tests", "params": { "mode": "EditMode" } }
 ```
 
-Step 2: Get results (use `job_id` from step 1)
+**Step 2: Get results** (use `job_id` from step 1)
 
 ```json
 { "tool": "get_test_job", "params": { "job_id": "<job_id>", "wait_timeout": 60, "include_failed_tests": true } }
@@ -116,36 +132,28 @@ Step 2: Get results (use `job_id` from step 1)
 
 ## Editor Scripts
 
-### Automated Configuration
+### When to Use
 
-Use editor scripts (in `Assets/Editor/`) to automate complex setups:
+Use editor scripts (`Assets/Editor/`) to automate complex setups:
+- Scene object references: `GameObject.Find()`
+- Prefab references: `AssetDatabase.LoadAssetAtPath<T>()`
 
-- **Scene object references**: Use `GameObject.Find()` to locate objects
-- **Prefab references**: Use `AssetDatabase.LoadAssetAtPath<T>()` to load assets from disk
-- **Trigger setup**: Add `[MenuItem]` attribute to create a menu item for the setup process
+### Execution Flow
 
-### Running Editor Scripts
-
-1. Use `[MenuItem("YourMenuPath")]` attribute on a static method
-2. Refresh Unity with `mcp_unityMCP_refresh_unity` to compile
-3. Execute the menu item with `mcp_unityMCP_execute_menu_item`
-4. The script will run in Unity and perform configured actions
+1. Add `[MenuItem("YourMenuPath")]` attribute to a static method
+2. Refresh Unity: `mcp_unityMCP_refresh_unity`
+3. Execute: `mcp_unityMCP_execute_menu_item`
+4. Delete one-time scripts after successful execution
 
 ---
 
 ## Preferences
 
-### Input System
-
-- Use the legacy input system
-
-### Git
-
-- Do not use `git worktree`
-
-### GameObjects Setup
-
-- Design the size and materials of different objects carefully
+| Category | Preference |
+|----------|------------|
+| Input System | Use legacy input system |
+| Git | Do not use `git worktree` |
+| GameObjects | Design size and materials carefully |
 
 ---
 
@@ -153,4 +161,6 @@ Use editor scripts (in `Assets/Editor/`) to automate complex setups:
 
 ### Common Issues
 
-- When using unity-test-framework, forgetting to call the `unity-test-framework` skill causes compilation errors
+| Issue | Solution |
+|-------|----------|
+| Compilation errors with unity-test-framework | Call the `unity-test-framework` skill first to configure asmdef correctly |
