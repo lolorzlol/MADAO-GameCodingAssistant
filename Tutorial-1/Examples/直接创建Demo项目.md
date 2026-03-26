@@ -13,6 +13,9 @@ Unity 新建 3D 项目（2D 也可以）。
 ### 步骤 1：安装 Python
 
 下载地址：https://www.python.org/downloads/
+直接下载最新版，注意必须3.10以上（不包括3.10）
+
+具体步骤直接看这个教程：https://blog.csdn.net/sensen_kiss/article/details/141940274
 
 > 已安装 Python 的可跳过。
 
@@ -59,6 +62,17 @@ https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
 > 之后会启动一个网络监听进程，不要关闭，最小化即可。
 
 ![MCP 运行状态](image-7.png)
+
+**常见问题一：使用的asset store旧版mcp** 
+这里注意先选择local模式
+![alt text](image-23.png)
+
+**常见问题二： 点击start server运行不起来**
+点下面Manual Server Launch旁边的三角形，自己手动开启mcp服务器。
+![alt text](image-24.png)
+复制框里面的内容到powershell，然后按enter键运行这段命令就能开启服务器了
+![alt text](image-25.png)
+
 
 ---
 
