@@ -36,7 +36,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 ### 步骤 3：安装 MCP
 
-安装方式有两种：
+安装方式有三种：
 
 **方式一：通过 Git URL 安装**
 
@@ -51,6 +51,15 @@ https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
 ![Unity Asset Store 安装](image-11.png)
 
 > Unity Asset Store 版本会落后一些。
+
+**方式三：用我配置好的初始项目，剩下的继续跟着做**
+
+在本项目中的”配好了mcp和trae配置文件的原始项目”文件夹，解压，然后直接用 Unity Hub 打开项目就好了。
+
+1. 解压文件夹
+   ![解压配置好的项目](image-28.png)
+2. 用 Unity Hub 直接打开项目文件夹
+   ![用 Unity Hub 打开项目](image-27.png)
 
 ### 步骤 4：开启 MCP
 
