@@ -1,4 +1,4 @@
-# MADAO-GameCodingAssistant
+# GameCodingAssistant
 
 [English](README_en.md) | 简体中文
 
